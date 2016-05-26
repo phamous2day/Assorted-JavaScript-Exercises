@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>event bubbling</title>
+    <script>
+    /*
+    This is a todo list app. Clicking the
+    "remove" button should remove the
+    corresponding li from the list.
+
+    Typing a task description into #input-field and then clicking #add-button should add a new li with
+    the task description and a remove button
+    into #tasks.
+    */
+    window.onload = function() {
+      // find the add button by id
+      var addButton = document.getElementById('add-button');
+      // add click event handler
+      addButton.addEventListener('click', function() {
+        // get the text field by ID
+        var field = document.getElementById('input-field');
+        // get the input value from the field
+        var inputValue = field.value;
+        // create a new li element
+        var li = document.createElement('li');
+        // set the inner HTML code of the li element to contain
+        // the description and a button
+        li.innerHTML = inputValue + '<button>remove</button>';
+        // append the li to the tasks list
+        tasks.appendChild(li);
+      });
+
+      // find the list
+      var tasks = document.getElementById('tasks');
+
+      // add click event listener to tasks
+      tasks.addEventListener('click', function(event) {
+        var button = event.target;
+        if (button.tagName === 'BUTTON') {
+          var li = button.parentNode;
+          var list = li.parentNode;
+          tasks.removeChild(li);
+        }
+      });
+    };
+
+    </script>
+  </head>
+  <body>
+    <input id="input-field" type="text">
+    <button id="add-button">Add</button>
+    <ul id="tasks">
+      <li>Water plants
+        <button>remove</button>
+      </li>
+      <li>Homework
+        <button>remove</button>
+      </li>
+    </ul>
+  </body>
+</html>
