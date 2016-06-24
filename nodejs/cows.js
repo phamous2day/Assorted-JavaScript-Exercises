@@ -1,8 +1,5 @@
 const cows = require('cows');
 
-cows();
+var thecows = cows();
 
-
-var fs = require('fs');
-var contents = fs.readFileSync('cows.txt').toString();
-console.log(contents);
+console.log(thecows.join('\n'));
