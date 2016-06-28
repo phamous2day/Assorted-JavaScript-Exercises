@@ -1,3 +1,11 @@
 <p>{{{content}}}</p>
 <hr>
+{{#if user}}
+
+<h2>  <span>Welcome {{user}}!</span> </h2>
+{{/if}}
 <a href="/{{pageName}}/edit">Edit this page</a>
+
+<form action="/logout">
+    <input type="submit" value="Logout">
+</form>
